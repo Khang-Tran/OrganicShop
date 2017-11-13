@@ -1,10 +1,33 @@
-import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnDestroy {
+  authSubscription;
+  constructor(private auth: AuthService, private rounter: Router, private userService: UserService) {
+    this.authSubscription = auth.user$.subscribe(user => {
+      // Update the logged in user
+      if (user) {
+        userService.save(user);
+        // Get the url before redirect in localStorage and navigate to that Url
+        let returnUrl = localStorage.getItem('returnUrl');
+        rounter.navigateByUrl(returnUrl);
+      }
+    })
+  }
+
+
+  // destructor
+  public ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
+  }
 }
+
+
