@@ -41,7 +41,7 @@ export class AuthService {
       .switchMap(user => {
         // Map if user is not null
         if (user) {
-          this.userService.get(user.uid)
+          return this.userService.get(user.uid)
         }
         //otherwise return null
         return Observable.of(null);

@@ -1,4 +1,8 @@
+import { Product } from '../../model/product';
+import { Subscription } from 'rxjs/Rx';
+import { ProductService } from '../../product.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-admin-products',
@@ -6,11 +10,23 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./admin-products.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminProductsComponent implements OnInit {
+export class AdminProductsComponent implements OnDestroy {
 
-  constructor() { }
+  products: Product[];
+  filteredProducts: any[];
+  subscription: Subscription;
+  constructor(private productService: ProductService) {
+    this.subscription = this.productService.getAll().subscribe(product => this.filteredProducts = this.products = product);
+  }
 
-  ngOnInit() {
+
+  filter(query: string) {
+    this.filteredProducts = (query) ?
+      this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) : this.products;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

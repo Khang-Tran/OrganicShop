@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-
+import { CustomFormsModule } from 'ng2-validation'
 // import Firebase Module
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireDatabaseModule } from 'angularfire2/database'
@@ -31,6 +31,10 @@ import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './product.service';
 
 @NgModule({
   declarations: [
@@ -49,10 +53,12 @@ import { AuthGuardService } from './auth-guard.service';
     LoginComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
+    CustomFormsModule,
     // Firebase modules
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -68,11 +74,20 @@ import { AuthGuardService } from './auth-guard.service';
       { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
       { path: 'my/orders', component: MyOrderComponent, canActivate: [AuthGuardService] },
-
+      {
+        path: 'admin/products/new', component: ProductFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+      {
+        path: 'admin/products/:id', component: ProductFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
       {
         path: 'admin/products', component: AdminProductsComponent,
-        canActivate: [AuthGuardService, AdminAuthGuardService, AdminAuthGuardService]
+        canActivate: [AuthGuardService, AdminAuthGuardService]
       },
+
+
       {
         path: 'admin/orders', component: AdminOrdersComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService]
@@ -81,7 +96,7 @@ import { AuthGuardService } from './auth-guard.service';
 
     NgbModule.forRoot()
   ],
-  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService],
+  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

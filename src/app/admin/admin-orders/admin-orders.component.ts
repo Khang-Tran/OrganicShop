@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -6,11 +7,5 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./admin-orders.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminOrdersComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class AdminOrdersComponent {
 }
