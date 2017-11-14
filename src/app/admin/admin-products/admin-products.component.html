@@ -1,9 +1,16 @@
+<!--New Button -->
 <p>
   <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
 </p>
+<!--End of button-->
+
+<!--Search products by name -->
 <p>
   <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search..">
 </p>
+<!--End of Search-->
+
+<!--Product DataTable-->
 <table class="table">
   <thead>
     <tr>
@@ -23,3 +30,4 @@
     </tr>
   </tbody>
 </table>
+<!--End of Table-->

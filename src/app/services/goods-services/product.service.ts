@@ -6,6 +6,7 @@ export class ProductService {
 
   constructor(private db: AngularFireDatabase) { }
 
+  // just normal crud operations
   create(product) {
     return this.db.list("/products").push(product);
   }

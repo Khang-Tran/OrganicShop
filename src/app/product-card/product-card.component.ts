@@ -10,7 +10,9 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 export class ProductCardComponent {
 
   constructor() { }
-
+  // directive for biding the product in order display its info in the card
   @Input('product') product: Product;
+
+  // determine whether display 'Add to Cart' button in the card or not
   @Input('show-actions') showAction = true;
 }

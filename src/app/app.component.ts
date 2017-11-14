@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnDestroy } from '@angular/core';
-import { AuthService } from './auth.service';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from './user.service';
+import { AuthService } from "./services/auth-services/auth.service";
+import { UserService } from "./services/user-services/user.service";
 
 @Component({
   selector: 'app-root',

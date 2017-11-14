@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class CategoryService {
 
   constructor(private db: AngularFireDatabase) { }
-
+  // return the list of categories and sort its by name
   getAll() {
     return this.db.list("categories", {
       query: {

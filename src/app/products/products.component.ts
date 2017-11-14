@@ -1,8 +1,8 @@
 import { Product } from '../model/product';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../product.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import 'rxjs/add/operator/switchmap'
+import { ProductService } from "../services/goods-services/product.service";
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -10,7 +10,7 @@ import 'rxjs/add/operator/switchmap'
   encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent {
-
+  // similar to admin products component
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category;
