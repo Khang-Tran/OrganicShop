@@ -14,7 +14,7 @@ export class ProductFormComponent implements OnInit {
   categories$;
   id;
   constructor(categoryService: CategoryService, private productService: ProductService, private router: Router, private route: ActivatedRoute) {
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
       this.productService.get(this.id).take(1).subscribe(p => this.product = p);
@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
     if (!confirm("Are you sure want to delete this product?"))
       return;
     this.productService.delete(this.id);
-    this.router.navigate(["/admin/products"]);    
+    this.router.navigate(["/admin/products"]);
   }
   ngOnInit() {
   }

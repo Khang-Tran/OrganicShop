@@ -1,9 +1,7 @@
 import { Product } from '../../model/product';
 import { Subscription } from 'rxjs/Rx';
 import { ProductService } from '../../product.service';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-
+import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
@@ -16,7 +14,8 @@ export class AdminProductsComponent implements OnDestroy {
   filteredProducts: any[];
   subscription: Subscription;
   constructor(private productService: ProductService) {
-    this.subscription = this.productService.getAll().subscribe(product => this.filteredProducts = this.products = product);
+    this.subscription = this.productService.getAll()
+      .subscribe(product => this.filteredProducts = this.products = product);
   }
 
 
