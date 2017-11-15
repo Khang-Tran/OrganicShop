@@ -1,3 +1,4 @@
+import { OrderService } from '../../order.service';
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -7,4 +8,9 @@ import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AdminOrdersComponent {
+  orders$;
+
+  constructor(orderService: OrderService) {
+    this.orders$ = orderService.getOrders();
+  }
 }
