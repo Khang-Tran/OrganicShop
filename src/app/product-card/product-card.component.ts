@@ -1,6 +1,7 @@
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Product } from '../model/product';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { ShoppingCart } from '../model/shopping-cart';
 
 @Component({
   selector: 'product-card',
@@ -17,14 +18,10 @@ export class ProductCardComponent {
   // determine whether display 'Add to Cart' button in the card or not
   @Input('show-actions') showAction = true;
 
-  @Input('shopping-cart') shoppingCart;
-  addToCart(product: Product) {
-    this.cartService.addToCart(product);
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 
-  getQuantity() {
-    if (!this.shoppingCart) return 0;
-    let item = this.shoppingCart.items[this.product.$key];
-    return item ? item.quantity : 0;
-  }
 }

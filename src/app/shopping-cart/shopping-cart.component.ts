@@ -1,3 +1,4 @@
+import { ShoppingCartService } from '../shopping-cart.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
@@ -7,10 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ShoppingCartComponent implements OnInit {
+  cart$;
+  constructor(private cartService: ShoppingCartService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    this.cart$ = await this.cartService.getCart();
   }
 
+  clearCart() {
+    this.cartService.clearCart();
+  }
 }

@@ -45,6 +45,7 @@ import { AuthService } from './services/auth-services/auth.service';
 import { AuthGuardService } from './services/auth-services/auth-guard.service';
 import { AdminAuthGuardService } from './services/auth-services/admin-auth-guard.service';
 import { ShoppingCartService } from './shopping-cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ShoppingCartService } from './shopping-cart.service';
     ProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
+    ProductQuantityComponent,
   ],
   imports: [
     BrowserModule,
