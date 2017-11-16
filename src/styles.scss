@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Adding boostrap */
+
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~font-awesome/css/font-awesome.css';
+$primay-color: #c1d62e;
+body {
+  padding-top: 80px;
+}
+
+.navbar-light .navbar-brand {
+  color: $primay-color
+}
+
+.list-group-item.active {
+  color: $primay-color;
+}
