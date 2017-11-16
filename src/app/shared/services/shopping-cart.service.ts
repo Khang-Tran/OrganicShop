@@ -11,7 +11,6 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) { }
 
   private async create() {
-    let cartId = await this.getOrCreateCartId()
     return this.db.list("/shopping-cart").push({
       dateCreated: new Date().getTime()
     });
