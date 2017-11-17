@@ -10,10 +10,10 @@ import { ProductService } from "../../../shared/services/goods-services/product.
 })
 export class AdminProductsComponent implements OnDestroy {
 
-  // products from the database
+  // original products from the database
   products: Product[];
   // this product array responsible for displaying after filtered
-  filteredProducts: any[];
+  filteredProducts: Product[];
   // for unsubscribe after finish
   subscription: Subscription;
 

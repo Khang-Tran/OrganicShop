@@ -20,6 +20,7 @@
         <label for="price">Price</label>
         <div class="input-group">
           <span class="input-group-addon">$</span>
+          <!-- Using angular validation -->
           <input [min]="0" #price="ngModel" required [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control">
         </div>
         <div *ngIf="price.touched && price.invalid" class="alert alert-danger">

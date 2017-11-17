@@ -1,3 +1,4 @@
+import { LoginMethod } from '../../../shared/model/login';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from "../../../shared/services/auth-services/auth.service";
 
@@ -13,18 +14,19 @@ export class LoginComponent {
   constructor(private auth: AuthService) { }
 
   // log in method by AuthService
-  loginWithGoogle() {
-    this.auth.login('Google');
+  login(method) {
+    switch (method){
+      case LoginMethod.Google:
+      this.auth.login(LoginMethod.Google);
+      break;
+
+      case LoginMethod.Twitter:
+      this.auth.login(LoginMethod.Twitter);
+      break;
+
+      case LoginMethod.Facebook:
+      this.auth.login(LoginMethod.Facebook);
+      break;
+    }  
   }
-
-  loginWithFacebook() {
-    this.auth.login('Facebook');
-  }
-
-  loginWithTwitter() {
-    this.auth.login('Twitter');
-  }
-
-
-
 }

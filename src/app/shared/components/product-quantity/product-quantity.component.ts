@@ -11,7 +11,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 export class ProductQuantityComponent {
 
   constructor(private cartService: ShoppingCartService) { }
-
+  
   @Input('product') product: Product;
 
   @Input('shopping-cart') shoppingCart;

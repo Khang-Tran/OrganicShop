@@ -18,6 +18,7 @@ export class ProductCardComponent {
   // determine whether display 'Add to Cart' button in the card or not
   @Input('show-actions') showAction = true;
 
+  // directive for binding shoppingCart for displaying
   @Input('shopping-cart') shoppingCart: ShoppingCart;
 
   addToCart() {

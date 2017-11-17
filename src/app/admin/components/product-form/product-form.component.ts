@@ -1,3 +1,5 @@
+import { Categories } from '../../../shared/model/categories';
+import { FirebaseListObservable } from 'angularfire2/database';
 import { Product } from '../../../shared/model/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -11,16 +13,17 @@ import { ProductService } from "../../../shared/services/goods-services/product.
   encapsulation: ViewEncapsulation.None
 })
 export class ProductFormComponent {
-  // hold the products from the database. 
+  // hold the product from the database with the given id. 
   // this initialization makes sure that the page wont crash in the very beginning
   product: Product = new Product();
 
   // hold the Observable of category
-  categories$;
+  categories$: FirebaseListObservable<Categories[]>
 
   // current product id 
-  id;
-  constructor(categoryService: CategoryService,
+  id: string;
+  constructor(
+    categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute) {

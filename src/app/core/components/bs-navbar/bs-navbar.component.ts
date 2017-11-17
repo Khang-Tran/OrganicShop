@@ -1,5 +1,5 @@
 import { ShoppingCart } from '../../../shared/model/shopping-cart';
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { AppUser } from '../../../shared/model/app-user';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -16,12 +16,13 @@ export class BsNavbarComponent implements OnDestroy, OnInit {
   // hold the user info
   appUser: AppUser;
 
-  subscription;
+  subscription: Subscription;
+
   cart$: Observable<ShoppingCart>;
+
   constructor(private auth: AuthService, private cartService: ShoppingCartService) {
     // get the app user by AuthService
     this.subscription = auth.appUser$.subscribe(appUser => this.appUser = appUser);
-
   }
 
   async ngOnInit() {

@@ -1,9 +1,13 @@
+import { ShoppingCart } from '../../../shared/model/shopping-cart';
+import { Observable } from 'rxjs/Rx';
+import { Order } from '../../../shared/model/order';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../../shared/services/order.service';
 import { AuthService } from '../../../shared/services/auth-services/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
-
+import 'rxjs/add/operator/take'
 @Component({
   selector: 'order-detail',
   templateUrl: './order-detail.component.html',
@@ -12,20 +16,22 @@ import { ShoppingCartService } from '../../../shared/services/shopping-cart.serv
 })
 export class OrderDetailComponent implements OnInit {
 
-  order$;
-  orderId;
-  cart$;
+  // Hold the order for displaying
+  order$: FirebaseObjectObservable<Order>;
+
+  // Hold the shopping cart
+  cart$: Observable<ShoppingCart>
   constructor(private authService: AuthService,
     orderService: OrderService,
     private route: ActivatedRoute,
     private cartService: ShoppingCartService) {
-    this.route.params.subscribe(params => this.orderId = params['id']);
-    this.order$ = orderService.getOrderById(this.orderId);
+    // Take the orderId from the url
+    let orderId;
+     this.route.params.take(1).subscribe(params => orderId = params['id']);
+    this.order$ = orderService.getOrderById(orderId);
   }
 
-
-  async ngOnInit() {
+ async ngOnInit() {
     this.cart$ = await this.cartService.getCart();
   }
-
 }

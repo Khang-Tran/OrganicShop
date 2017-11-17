@@ -12,6 +12,7 @@
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
+        <!-- This link to order detail component-->
         <a [routerLink]="['/order/details', order.$key]">View</a>
       </td>
     </tr>

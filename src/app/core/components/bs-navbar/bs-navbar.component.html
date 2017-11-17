@@ -31,15 +31,16 @@
             <a class="nav-link" routerLink="/login">Login</a>
           </li>
         </ng-template>
-
+        <!--If appUser not exist, will render ng-template above instead-->
         <li *ngIf="appUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a ngbDropdownToggle class="font-weight-bold nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{appUser.name}}
           </a>
 
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" routerLink="/my/orders">My Order</a>
 
+            <!--Only render this if user is admin-->
             <ng-container *ngIf="appUser.isAdmin">
               <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
               <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>

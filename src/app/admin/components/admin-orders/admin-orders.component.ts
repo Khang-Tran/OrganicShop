@@ -1,3 +1,6 @@
+import { FirebaseListObservable } from 'angularfire2/database';
+import { Order } from '../../../shared/model/order';
+import { Observable } from 'rxjs/Rx';
 import { OrderService } from '../../../shared/services/order.service';
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 
@@ -8,7 +11,8 @@ import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AdminOrdersComponent {
-  orders$;
+  // just take all orders and display it using async
+  orders$: FirebaseListObservable<Order[]>
 
   constructor(orderService: OrderService) {
     this.orders$ = orderService.getOrders();

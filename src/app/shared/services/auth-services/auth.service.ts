@@ -1,3 +1,4 @@
+import { LoginMethod } from '../../model/login';
 
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -26,14 +27,14 @@ export class AuthService {
     // Store it in local storage
     localStorage.setItem('returnUrl', returnUrl);
     switch (method) {
-      case 'Google':
+      case LoginMethod.Google:
         this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
         break;
 
-      case 'Facebook':
+      case LoginMethod.Facebook:
         this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
         break;
-      case 'Twitter':
+      case LoginMethod.Twitter:
         this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
         break;
     }
