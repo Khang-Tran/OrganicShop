@@ -1,5 +1,32 @@
 <!--just a log in button with a click event-->
 
-<button (click)="login()" class="btn btn-primary">
-  Login with Googe
-</button>
+<!-- <button (click)="login()" class="btn-google" class='btn btn-lg '>
+</button> -->
+
+<div class="kpx_login">
+  <h3 class="kpx_authTitle">
+    Login to continue..
+  </h3>
+  <div class="row kpx_row-sm-offset-3 kpx_socialButtons">
+    <div class="col-xs-2 col-sm-2">
+      <a (click)="loginWithFacebook()" class="btn btn-lg btn-block kpx_btn-facebook" data-toggle="tooltip" data-placement="top"
+        title="Facebook">
+        <i class="fa fa-facebook fa-2x"></i>
+        <span class="hidden-xs"></span>
+      </a>
+    </div>
+    <div class="col-xs-2 col-sm-2">
+      <a (click)="loginWithTwitter()" class="btn btn-lg btn-block kpx_btn-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+        <i class="fa fa-twitter fa-2x"></i>
+        <span class="hidden-xs"></span>
+      </a>
+    </div>
+    <div class="col-xs-2 col-sm-2">
+      <a (click)="loginWithGoogle()" class="btn btn-lg btn-block kpx_btn-google-plus" data-toggle="tooltip" data-placement="top"
+        title="Google Plus">
+        <i class="fa fa-google-plus fa-2x"></i>
+        <span class="hidden-xs"></span>
+      </a>
+    </div>
+  </div>
+  <br>

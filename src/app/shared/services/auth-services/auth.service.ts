@@ -19,15 +19,26 @@ export class AuthService {
   }
 
   // Login method
-  login() {
+  login(method) {
     // Get the current url before redirect to login page
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
 
     // Store it in local storage
     localStorage.setItem('returnUrl', returnUrl);
+    switch (method) {
+      case 'Google':
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+        break;
 
+      case 'Facebook':
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+        break;
+      case 'Twitter':
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+        break;
+    }
     // Open Google Auth
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+
   }
 
   // Logout method

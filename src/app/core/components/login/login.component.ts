@@ -13,8 +13,18 @@ export class LoginComponent {
   constructor(private auth: AuthService) { }
 
   // log in method by AuthService
-  login() {
-    this.auth.login();
+  loginWithGoogle() {
+    this.auth.login('Google');
   }
+
+  loginWithFacebook() {
+    this.auth.login('Facebook');
+  }
+
+  loginWithTwitter() {
+    this.auth.login('Twitter');
+  }
+
+
 
 }
