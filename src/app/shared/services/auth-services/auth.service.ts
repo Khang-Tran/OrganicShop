@@ -34,7 +34,7 @@ export class AuthService {
         this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
         break;
       case 'Twitter':
-        this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
         break;
     }
     // Open Google Auth
