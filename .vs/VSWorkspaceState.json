@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\e2e",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\core",
+    "\\src\\app\\core\\components",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\model",
+    "\\src\\app\\shared\\model\\categories"
+  ],
+  "SelectedNode": "\\src\\app\\shared\\model\\order.ts",
+  "PreviewInSolutionExplorer": false
+}
